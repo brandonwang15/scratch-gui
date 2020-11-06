@@ -1,4 +1,5 @@
 import ScratchBlocks from 'scratch-blocks';
+console.log("helloooo");
 
 /**
  * Connect scratch blocks with the vm

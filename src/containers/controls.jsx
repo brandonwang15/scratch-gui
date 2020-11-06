@@ -11,7 +11,8 @@ class Controls extends React.Component {
         super(props);
         bindAll(this, [
             'handleGreenFlagClick',
-            'handleStopAllClick'
+            'handleStopAllClick',
+            'handleSingleStepClick',
         ]);
     }
     handleGreenFlagClick (e) {
@@ -32,7 +33,9 @@ class Controls extends React.Component {
         this.props.vm.stopAll();
     }
     handleSingleStepClick (e) {
+        e.preventDefault();
         console.log("Single Step click!");
+        this.props.vm.setSingleStepMode(true);
     }
     render () {
         const {
