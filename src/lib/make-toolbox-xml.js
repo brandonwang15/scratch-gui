@@ -15,6 +15,7 @@ const motion = function (isInitialSetup, isStage, targetId) {
         ${isStage ? `
         <label text="${stageSelected}"></label>
         ` : `
+        <block type="motion_move100steps" />
         <block type="motion_movesteps">
             <value name="STEPS">
                 <shadow type="math_number">

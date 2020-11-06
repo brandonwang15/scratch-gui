@@ -5,6 +5,7 @@ import {defineMessages, injectIntl, intlShape} from 'react-intl';
 
 import GreenFlag from '../green-flag/green-flag.jsx';
 import StopAll from '../stop-all/stop-all.jsx';
+import SingleStep from "../single-step/single-step.jsx";
 import TurboMode from '../turbo-mode/turbo-mode.jsx';
 
 import styles from './controls.css';
@@ -29,6 +30,7 @@ const Controls = function (props) {
         intl,
         onGreenFlagClick,
         onStopAllClick,
+        handleSingleStepClick,
         turbo,
         ...componentProps
     } = props;
@@ -41,6 +43,11 @@ const Controls = function (props) {
                 active={active}
                 title={intl.formatMessage(messages.goTitle)}
                 onClick={onGreenFlagClick}
+            />
+            <SingleStep
+                active={active}
+                title={intl.formatMessage(messages.goTitle)}
+                onClick={handleSingleStepClick}
             />
             <StopAll
                 active={active}

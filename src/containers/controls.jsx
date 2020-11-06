@@ -17,8 +17,10 @@ class Controls extends React.Component {
     handleGreenFlagClick (e) {
         e.preventDefault();
         if (e.shiftKey) {
+            console.log("TURBO MODE!");
             this.props.vm.setTurboMode(!this.props.turbo);
         } else {
+            console.log("NOT TURBO MODE");
             if (!this.props.isStarted) {
                 this.props.vm.start();
             }
@@ -28,6 +30,9 @@ class Controls extends React.Component {
     handleStopAllClick (e) {
         e.preventDefault();
         this.props.vm.stopAll();
+    }
+    handleSingleStepClick (e) {
+        console.log("Single Step click!");
     }
     render () {
         const {
@@ -44,6 +49,7 @@ class Controls extends React.Component {
                 turbo={turbo}
                 onGreenFlagClick={this.handleGreenFlagClick}
                 onStopAllClick={this.handleStopAllClick}
+                handleSingleStepClick={this.handleSingleStepClick}
             />
         );
     }
