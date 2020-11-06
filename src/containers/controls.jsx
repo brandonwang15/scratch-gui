@@ -36,6 +36,7 @@ class Controls extends React.Component {
         e.preventDefault();
         console.log("Single Step click!");
         this.props.vm.setSingleStepMode(true);
+        this.props.vm.setDoStep(true);
     }
     render () {
         const {
