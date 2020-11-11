@@ -7,6 +7,9 @@ import GreenFlag from '../green-flag/green-flag.jsx';
 import StopAll from '../stop-all/stop-all.jsx';
 import SingleStep from "../single-step/single-step.jsx";
 import ToggleStep from "../single-step/toggle-step.jsx";
+import ToggleBreakpoints from "../single-step/toggle-breakpoints.jsx";
+import ResumeExecution from "../single-step/resume.jsx";
+
 import TurboMode from '../turbo-mode/turbo-mode.jsx';
 
 import styles from './controls.css';
@@ -21,6 +24,26 @@ const messages = defineMessages({
         id: 'gui.controls.stop',
         defaultMessage: 'Stop',
         description: 'Stop button title'
+    },
+    toggleBreakpointsTitle: {
+        id: 'gui.controls.breakpoints',
+        defaultMessage: 'Toggle Breakpoints',
+        description: 'Toggle Breakpoints button title'
+    },
+    toggleSingleSteppingTitle: {
+        id: 'gui.controls.stepping',
+        defaultMessage: 'Toggle Single Stepping',
+        description: 'Toggle Single Stepping button title'
+    },
+    resumeTitle: {
+        id: 'gui.controls.resume',
+        defaultMessage: 'Resume Execution',
+        description: 'Resume button title'
+    },
+    stepTitle: {
+        id: 'gui.controls.step',
+        defaultMessage: 'Single Step',
+        description: 'Single Step button title'
     }
 });
 
@@ -31,8 +54,10 @@ const Controls = function (props) {
         intl,
         onGreenFlagClick,
         onStopAllClick,
-        handleSingleStepClick,
+        handleToggleBreakpointClick,
         handleToggleStepClick,
+        handleResumeExecutionClick,
+        handleSingleStepClick,
         turbo,
         ...componentProps
     } = props;
@@ -46,20 +71,30 @@ const Controls = function (props) {
                 title={intl.formatMessage(messages.goTitle)}
                 onClick={onGreenFlagClick}
             />
-            <ToggleStep
-                active={active}
-                title={intl.formatMessage(messages.goTitle)} // TODO(bdnwang): toggle step title text
-                onClick={handleToggleStepClick}
-            />
-            <SingleStep
-                active={active}
-                title={intl.formatMessage(messages.goTitle)} // TODO(bdnwang): single step title text
-                onClick={handleSingleStepClick}
-            />
             <StopAll
                 active={active}
                 title={intl.formatMessage(messages.stopTitle)}
                 onClick={onStopAllClick}
+            />
+            <ToggleBreakpoints
+                active={active}
+                title={intl.formatMessage(messages.toggleBreakpointsTitle)} // TODO(bdnwang): toggle step title text
+                onClick={handleToggleBreakpointClick}
+            />
+            <ToggleStep
+                active={active}
+                title={intl.formatMessage(messages.toggleSingleSteppingTitle)} // TODO(bdnwang): toggle step title text
+                onClick={handleToggleStepClick}
+            />
+            <ResumeExecution
+                active={active}
+                title={intl.formatMessage(messages.resumeTitle)} // TODO(bdnwang): toggle step title text
+                onClick={handleResumeExecutionClick}
+            />
+            <SingleStep
+                active={active}
+                title={intl.formatMessage(messages.stepTitle)} // TODO(bdnwang): single step title text
+                onClick={handleSingleStepClick}
             />
             {turbo ? (
                 <TurboMode />

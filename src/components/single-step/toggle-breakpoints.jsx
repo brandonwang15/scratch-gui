@@ -2,10 +2,10 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import stepIcon from './single-block-step.svg';
-import styles from './single-step.css';
+import breakpointsIcon from './breakpoint.svg';
+import styles from './toggle-breakpoints.css';
 
-const SingleStepComponent = function (props) {
+const ToggleBreakpointsComponent = function (props) {
     const {
         active,
         className,
@@ -17,13 +17,13 @@ const SingleStepComponent = function (props) {
         <img
             className={classNames(
                 className,
-                styles.singleStep,
+                styles.toggleBreakpoints,
                 {
                     [styles.isActive]: active
                 }
             )}
             draggable={false}
-            src={stepIcon}
+            src={breakpointsIcon}
             width="20"
             height="20"
             title={title}
@@ -32,14 +32,14 @@ const SingleStepComponent = function (props) {
         />
     );
 };
-SingleStepComponent.propTypes = {
+ToggleBreakpointsComponent.propTypes = {
     active: PropTypes.bool,
     className: PropTypes.string,
     onClick: PropTypes.func.isRequired,
     title: PropTypes.string
 };
-SingleStepComponent.defaultProps = {
+ToggleBreakpointsComponent.defaultProps = {
     active: false,
-    title: 'Single Step'
+    title: 'Toggle Breakpoints'
 };
-export default SingleStepComponent;
+export default ToggleBreakpointsComponent;

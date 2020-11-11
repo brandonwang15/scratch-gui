@@ -14,6 +14,8 @@ class Controls extends React.Component {
             'handleStopAllClick',
             'handleToggleStepClick',
             'handleSingleStepClick',
+            'handleToggleBreakpointClick',
+            'handleResumeExecutionClick'
         ]);
     }
     handleGreenFlagClick (e) {
@@ -36,13 +38,24 @@ class Controls extends React.Component {
     handleToggleStepClick (e) {
         e.preventDefault();
         this.props.vm.setSingleStepMode(!this.props.vm.runtime.singleStepMode);
-        console.log("singleStepMode set to: %s", this.props.vm.runtime.singleStepMode);
+        console.log("TOGGLE STEP clicked. singleStepMode set to: %s", this.props.vm.runtime.singleStepMode);
     }
     handleSingleStepClick (e) {
         e.preventDefault();
-        console.log("Single Step click!");
+        console.log("SINGLE STEP clicked.");
         this.props.vm.setDoStep(true);
     }
+    handleToggleBreakpointClick (e) {
+        e.preventDefault();
+        this.props.vm.enableBreakpoints(!this.props.vm.runtime.breakpointsEnabled);
+        console.log("TOGGLE BKPT clicked. breakpointsEnabled = %s", this.props.vm.runtime.breakpointsEnabled);
+    }
+    handleResumeExecutionClick (e) {
+        e.preventDefault();
+        this.props.vm.setSingleStepMode(false);
+        console.log("RESUME clicked.");
+    }
+
     render () {
         const {
             vm, // eslint-disable-line no-unused-vars
@@ -59,7 +72,9 @@ class Controls extends React.Component {
                 onGreenFlagClick={this.handleGreenFlagClick}
                 onStopAllClick={this.handleStopAllClick}
                 handleToggleStepClick={this.handleToggleStepClick}
+                handleToggleBreakpointClick={this.handleToggleBreakpointClick}
                 handleSingleStepClick={this.handleSingleStepClick}
+                handleResumeExecutionClick={this.handleResumeExecutionClick}
             />
         );
     }

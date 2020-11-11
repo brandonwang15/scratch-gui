@@ -2,10 +2,10 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import stepIcon from './single-block-step.svg';
-import styles from './single-step.css';
+import resumeIcon from './resume.svg';
+import styles from './resume.css';
 
-const SingleStepComponent = function (props) {
+const ResumeExecutionComponent = function (props) {
     const {
         active,
         className,
@@ -17,13 +17,13 @@ const SingleStepComponent = function (props) {
         <img
             className={classNames(
                 className,
-                styles.singleStep,
+                styles.resume,
                 {
                     [styles.isActive]: active
                 }
             )}
             draggable={false}
-            src={stepIcon}
+            src={resumeIcon}
             width="20"
             height="20"
             title={title}
@@ -32,14 +32,14 @@ const SingleStepComponent = function (props) {
         />
     );
 };
-SingleStepComponent.propTypes = {
+ResumeExecutionComponent.propTypes = {
     active: PropTypes.bool,
     className: PropTypes.string,
     onClick: PropTypes.func.isRequired,
     title: PropTypes.string
 };
-SingleStepComponent.defaultProps = {
+ResumeExecutionComponent.defaultProps = {
     active: false,
-    title: 'Single Step'
+    title: 'Resume'
 };
-export default SingleStepComponent;
+export default ResumeExecutionComponent;

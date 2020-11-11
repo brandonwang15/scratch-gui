@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import toggleIcon from './toggle.png';
+import toggleIcon from './slowmode.svg';
 import styles from './toggle-step.css';
 
 const ToggleStepComponent = function (props) {
@@ -24,6 +24,8 @@ const ToggleStepComponent = function (props) {
             )}
             draggable={false}
             src={toggleIcon}
+            width="20"
+            height="20"
             title={title}
             onClick={onClick}
             {...componentProps}
@@ -38,6 +40,6 @@ ToggleStepComponent.propTypes = {
 };
 ToggleStepComponent.defaultProps = {
     active: false,
-    title: 'Go'
+    title: 'Toggle Single Stepping'
 };
 export default ToggleStepComponent;
