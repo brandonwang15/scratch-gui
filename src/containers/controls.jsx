@@ -12,6 +12,7 @@ class Controls extends React.Component {
         bindAll(this, [
             'handleGreenFlagClick',
             'handleStopAllClick',
+            'handleToggleStepClick',
             'handleSingleStepClick',
         ]);
     }
@@ -32,10 +33,14 @@ class Controls extends React.Component {
         e.preventDefault();
         this.props.vm.stopAll();
     }
+    handleToggleStepClick (e) {
+        e.preventDefault();
+        this.props.vm.setSingleStepMode(!this.props.vm.runtime.singleStepMode);
+        console.log("singleStepMode set to: %s", this.props.vm.runtime.singleStepMode);
+    }
     handleSingleStepClick (e) {
         e.preventDefault();
         console.log("Single Step click!");
-        this.props.vm.setSingleStepMode(true);
         this.props.vm.setDoStep(true);
     }
     render () {
@@ -53,6 +58,7 @@ class Controls extends React.Component {
                 turbo={turbo}
                 onGreenFlagClick={this.handleGreenFlagClick}
                 onStopAllClick={this.handleStopAllClick}
+                handleToggleStepClick={this.handleToggleStepClick}
                 handleSingleStepClick={this.handleSingleStepClick}
             />
         );
