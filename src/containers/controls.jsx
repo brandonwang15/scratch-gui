@@ -62,12 +62,15 @@ class Controls extends React.Component {
             isStarted, // eslint-disable-line no-unused-vars
             projectRunning,
             turbo,
+            isPaused,
             ...props
         } = this.props;
+
         return (
             <ControlsComponent
                 {...props}
                 active={projectRunning}
+                paused={isPaused}
                 turbo={turbo}
                 onGreenFlagClick={this.handleGreenFlagClick}
                 onStopAllClick={this.handleStopAllClick}
@@ -84,13 +87,15 @@ Controls.propTypes = {
     isStarted: PropTypes.bool.isRequired,
     projectRunning: PropTypes.bool.isRequired,
     turbo: PropTypes.bool.isRequired,
-    vm: PropTypes.instanceOf(VM)
+    vm: PropTypes.instanceOf(VM),
+    isPaused: PropTypes.bool.isRequired
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
     isStarted: state.scratchGui.vmStatus.running,
     projectRunning: state.scratchGui.vmStatus.running,
-    turbo: state.scratchGui.vmStatus.turbo
+    turbo: state.scratchGui.vmStatus.turbo,
+    isPaused: ownProps.vm.runtime.singleStepMode && state.scratchGui.vmStatus.running && !ownProps.vm.runtime.doSingleStep
 });
 // no-op function to prevent dispatch prop being passed to component
 const mapDispatchToProps = () => ({});

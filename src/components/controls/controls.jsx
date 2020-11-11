@@ -50,6 +50,7 @@ const messages = defineMessages({
 const Controls = function (props) {
     const {
         active,
+        paused,
         className,
         intl,
         onGreenFlagClick,
@@ -77,22 +78,20 @@ const Controls = function (props) {
                 onClick={onStopAllClick}
             />
             <ToggleBreakpoints
-                active={active}
                 title={intl.formatMessage(messages.toggleBreakpointsTitle)} // TODO(bdnwang): toggle step title text
                 onClick={handleToggleBreakpointClick}
             />
             <ToggleStep
-                active={active}
                 title={intl.formatMessage(messages.toggleSingleSteppingTitle)} // TODO(bdnwang): toggle step title text
                 onClick={handleToggleStepClick}
             />
             <ResumeExecution
-                active={active}
+                active={paused}
                 title={intl.formatMessage(messages.resumeTitle)} // TODO(bdnwang): toggle step title text
                 onClick={handleResumeExecutionClick}
             />
             <SingleStep
-                active={active}
+                active={paused}
                 title={intl.formatMessage(messages.stepTitle)} // TODO(bdnwang): single step title text
                 onClick={handleSingleStepClick}
             />
