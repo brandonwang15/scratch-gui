@@ -63,6 +63,8 @@ class Controls extends React.Component {
             projectRunning,
             turbo,
             isPaused,
+            breakpointsEnabled,
+            singleStepMode,
             ...props
         } = this.props;
 
@@ -71,6 +73,8 @@ class Controls extends React.Component {
                 {...props}
                 active={projectRunning}
                 paused={isPaused}
+                breakpointsEnabled={breakpointsEnabled}
+                singleStepMode={singleStepMode}
                 turbo={turbo}
                 onGreenFlagClick={this.handleGreenFlagClick}
                 onStopAllClick={this.handleStopAllClick}
@@ -88,14 +92,18 @@ Controls.propTypes = {
     projectRunning: PropTypes.bool.isRequired,
     turbo: PropTypes.bool.isRequired,
     vm: PropTypes.instanceOf(VM),
-    isPaused: PropTypes.bool.isRequired
+    isPaused: PropTypes.bool.isRequired,
+    breakpointsEnabled: PropTypes.bool.isRequired,
+    singleStepMode: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({
     isStarted: state.scratchGui.vmStatus.running,
     projectRunning: state.scratchGui.vmStatus.running,
     turbo: state.scratchGui.vmStatus.turbo,
-    isPaused: ownProps.vm.runtime.singleStepMode && state.scratchGui.vmStatus.running && !ownProps.vm.runtime.doSingleStep
+    isPaused: ownProps.vm.runtime.singleStepMode && state.scratchGui.vmStatus.running && !ownProps.vm.runtime.doSingleStep,
+    breakpointsEnabled: ownProps.vm.runtime.breakpointsEnabled,
+    singleStepMode: ownProps.vm.runtime.singleStepMode
 });
 // no-op function to prevent dispatch prop being passed to component
 const mapDispatchToProps = () => ({});

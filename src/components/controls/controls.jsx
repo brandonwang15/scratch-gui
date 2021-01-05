@@ -51,6 +51,8 @@ const Controls = function (props) {
     const {
         active,
         paused,
+        breakpointsEnabled,
+        singleStepMode,
         className,
         intl,
         onGreenFlagClick,
@@ -78,10 +80,12 @@ const Controls = function (props) {
                 onClick={onStopAllClick}
             />
             <ToggleBreakpoints
+                // active={breakpointsEnabled}
                 title={intl.formatMessage(messages.toggleBreakpointsTitle)} // TODO(bdnwang): toggle step title text
                 onClick={handleToggleBreakpointClick}
             />
             <ToggleStep
+                // active={singleStepMode}
                 title={intl.formatMessage(messages.toggleSingleSteppingTitle)} // TODO(bdnwang): toggle step title text
                 onClick={handleToggleStepClick}
             />
