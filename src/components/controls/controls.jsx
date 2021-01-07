@@ -6,6 +6,7 @@ import {defineMessages, injectIntl, intlShape} from 'react-intl';
 import GreenFlag from '../green-flag/green-flag.jsx';
 import StopAll from '../stop-all/stop-all.jsx';
 import SingleStep from "../single-step/single-step.jsx";
+import IsPausedIndicator from "../single-step/is-paused-indicator.jsx";
 import ToggleStep from "../single-step/toggle-step.jsx";
 import ToggleBreakpoints from "../single-step/toggle-breakpoints.jsx";
 import ResumeExecution from "../single-step/resume.jsx";
@@ -79,16 +80,6 @@ const Controls = function (props) {
                 title={intl.formatMessage(messages.stopTitle)}
                 onClick={onStopAllClick}
             />
-            <ToggleBreakpoints
-                // active={breakpointsEnabled}
-                title={intl.formatMessage(messages.toggleBreakpointsTitle)} // TODO(bdnwang): toggle step title text
-                onClick={handleToggleBreakpointClick}
-            />
-            <ToggleStep
-                // active={singleStepMode}
-                title={intl.formatMessage(messages.toggleSingleSteppingTitle)} // TODO(bdnwang): toggle step title text
-                onClick={handleToggleStepClick}
-            />
             <ResumeExecution
                 active={paused}
                 title={intl.formatMessage(messages.resumeTitle)} // TODO(bdnwang): toggle step title text
@@ -99,6 +90,20 @@ const Controls = function (props) {
                 title={intl.formatMessage(messages.stepTitle)} // TODO(bdnwang): single step title text
                 onClick={handleSingleStepClick}
             />
+            <IsPausedIndicator
+                isPaused={paused.toString()}
+                title="test title"
+            />
+            {/* <ToggleBreakpoints
+                // active={breakpointsEnabled}
+                title={intl.formatMessage(messages.toggleBreakpointsTitle)} // TODO(bdnwang): toggle step title text
+                onClick={handleToggleBreakpointClick}
+            />
+            <ToggleStep
+                // active={singleStepMode}
+                title={intl.formatMessage(messages.toggleSingleSteppingTitle)} // TODO(bdnwang): toggle step title text
+                onClick={handleToggleStepClick}
+            /> */}
             {turbo ? (
                 <TurboMode />
             ) : null}
