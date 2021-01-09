@@ -91,19 +91,10 @@ const Controls = function (props) {
                 onClick={handleSingleStepClick}
             />
             <IsPausedIndicator
-                isPaused={paused.toString()}
-                title="test title"
+                isPaused={paused}
+                // isPaused={paused.toString()}
+                title="Paused: "
             />
-            {/* <ToggleBreakpoints
-                // active={breakpointsEnabled}
-                title={intl.formatMessage(messages.toggleBreakpointsTitle)} // TODO(bdnwang): toggle step title text
-                onClick={handleToggleBreakpointClick}
-            />
-            <ToggleStep
-                // active={singleStepMode}
-                title={intl.formatMessage(messages.toggleSingleSteppingTitle)} // TODO(bdnwang): toggle step title text
-                onClick={handleToggleStepClick}
-            /> */}
             {turbo ? (
                 <TurboMode />
             ) : null}

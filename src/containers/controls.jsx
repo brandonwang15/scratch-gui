@@ -101,9 +101,11 @@ const mapStateToProps = (state, ownProps) => ({
     isStarted: state.scratchGui.vmStatus.running,
     projectRunning: state.scratchGui.vmStatus.running,
     turbo: state.scratchGui.vmStatus.turbo,
-    isPaused: ownProps.vm.runtime.singleStepMode && state.scratchGui.vmStatus.running && !ownProps.vm.runtime.doSingleStep,
+    isPaused: state.scratchGui.vmStatus.singleStepMode && state.scratchGui.vmStatus.running && !ownProps.vm.runtime.doSingleStep,
+    // isPaused: ownProps.vm.runtime.singleStepMode && !ownProps.vm.runtime.doSingleStep,
     breakpointsEnabled: ownProps.vm.runtime.breakpointsEnabled,
-    singleStepMode: ownProps.vm.runtime.singleStepMode
+    singleStepMode: state.scratchGui.vmStatus.singleStepMode,
+    // singleStepMode: ownProps.vm.runtime.singleStepMode
 });
 // no-op function to prevent dispatch prop being passed to component
 const mapDispatchToProps = () => ({});

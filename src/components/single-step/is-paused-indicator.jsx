@@ -14,7 +14,7 @@ const IsPausedIndicatorComponent = function (props) {
     } = props;
     return (
         <div>
-            Paused: {isPaused}
+            Paused: {isPaused.toString()}
         </div>);
 };
 IsPausedIndicatorComponent.propTypes = {

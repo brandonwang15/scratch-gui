@@ -9,7 +9,7 @@ import {updateTargets} from '../reducers/targets';
 import {updateBlockDrag} from '../reducers/block-drag';
 import {updateMonitors} from '../reducers/monitors';
 import {setProjectChanged, setProjectUnchanged} from '../reducers/project-changed';
-import {setRunningState, setTurboState, setStartedState} from '../reducers/vm-status';
+import {setRunningState, setTurboState, setStartedState, setSingleStepModeState} from '../reducers/vm-status';
 import {showExtensionAlert} from '../reducers/alerts';
 import {updateMicIndicator} from '../reducers/mic-indicator';
 
@@ -46,6 +46,9 @@ const vmListenerHOC = function (WrappedComponent) {
             this.props.vm.on('PROJECT_START', this.props.onGreenFlag);
             this.props.vm.on('PERIPHERAL_CONNECTION_LOST_ERROR', this.props.onShowExtensionAlert);
             this.props.vm.on('MIC_LISTENING', this.props.onMicListeningUpdate);
+
+            this.props.vm.on('SINGLE_STEP_ON', this.props.onSingleStepModeOn);
+            this.props.vm.on('SINGLE_STEP_OFF', this.props.onSingleStepModeOff);
 
         }
         componentDidMount () {
@@ -134,6 +137,8 @@ const vmListenerHOC = function (WrappedComponent) {
                 onRuntimeStarted,
                 onTurboModeOff,
                 onTurboModeOn,
+                onSingleStepModeOff,
+                onSingleStepModeOn,
                 onShowExtensionAlert,
                 /* eslint-enable no-unused-vars */
                 ...props
@@ -158,6 +163,8 @@ const vmListenerHOC = function (WrappedComponent) {
         onTargetsUpdate: PropTypes.func.isRequired,
         onTurboModeOff: PropTypes.func.isRequired,
         onTurboModeOn: PropTypes.func.isRequired,
+        onSingleStepModeOff: PropTypes.func.isRequired,
+        onSingleStepModeOn: PropTypes.func.isRequired,
         projectChanged: PropTypes.bool,
         shouldUpdateTargets: PropTypes.bool,
         shouldUpdateProjectChanged: PropTypes.bool,
@@ -197,6 +204,8 @@ const vmListenerHOC = function (WrappedComponent) {
         onRuntimeStarted: () => dispatch(setStartedState(true)),
         onTurboModeOn: () => dispatch(setTurboState(true)),
         onTurboModeOff: () => dispatch(setTurboState(false)),
+        onSingleStepModeOn: () => dispatch(setSingleStepModeState(true)),
+        onSingleStepModeOff: () => dispatch(setSingleStepModeState(false)),
         onShowExtensionAlert: data => {
             dispatch(showExtensionAlert(data));
         },
