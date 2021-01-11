@@ -20,6 +20,12 @@ class Controls extends React.Component {
     }
     handleGreenFlagClick (e) {
         e.preventDefault();
+
+        // When starting a program via greenFlag, single step mode should be reset to its
+        // default "false" state. This ensures we always run normally (and don't single-step then pause)
+        // after clicking greenFlag.
+        this.props.vm.setSingleStepMode(false);
+
         if (e.shiftKey) {
             console.log("TURBO MODE!");
             this.props.vm.setTurboMode(!this.props.turbo);
