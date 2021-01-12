@@ -14,6 +14,11 @@
     background-color: $motion-light-transparent;
 }
 
+.single-step {
+    opacity: 0.5;
+}
+
 .single-step.is-active {
-    background-color: $motion-transparent;
+    opacity: 1;
+    /* background-color: $motion-transparent; */
 }

@@ -13,7 +13,7 @@ const IsPausedIndicatorComponent = function (props) {
         ...componentProps
     } = props;
     return (
-        <div>
+        <div style={{"padding-top": "7px"}}>
             Paused: {isPaused.toString()}
         </div>);
 };
