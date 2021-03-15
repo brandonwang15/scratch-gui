@@ -12,9 +12,15 @@ const IsPausedIndicatorComponent = function (props) {
         title,
         ...componentProps
     } = props;
+
+    var backgroundColor = isPaused ? "red" : "green"
+
     return (
-        <div style={{"padding-top": "7px"}}>
-            Paused: {isPaused.toString()}
+        <div style={{"padding-top": "7px",
+            "background-color": backgroundColor}}>
+            <b>
+            Paused? {isPaused ? "Yes!" : "No."}
+            </b>
         </div>);
 };
 IsPausedIndicatorComponent.propTypes = {
